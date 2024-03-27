@@ -18,5 +18,5 @@ export const darkTheme = {
   white: "#fff",
   "gray-400": "#1A202C",
   "gray-300": "#666666",
-  "red-200": "#ADADAD",
+  "red-200": "#FF6B6B",
 };

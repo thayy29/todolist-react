@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CheckSquare, PlusCircle } from "phosphor-react";
+import { Check, CheckSquare, PlusCircle, Trash } from "phosphor-react";
 import {
   Box,
   ListaWrapper,
@@ -7,21 +7,23 @@ import {
   TaskInput,
   ButtonAdd,
   BoxList,
+  Item,
+  ButtonRemove,
+  IconTask,
+  ButtonCheck,
 } from "./styles";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Task } from "../Task";
 
 export function List() {
   //guarda a lista toda
-  const [tasks, setTasks] = useState(["Nova Task"]);
+  const [tasks, setTasks] = useState<string[]>([]);
 
   //guarda o estado mais atualizado
   const [newTask, setNewTask] = useState("");
-
   //adiciona nova task
   function handleCreateNewTask(event: FormEvent<HTMLInputElement>) {
     event.preventDefault();
-    console.log("adicionou");
     const newTask = event.target["0"].value;
 
     setTasks([...tasks, newTask]);
@@ -32,6 +34,15 @@ export function List() {
   function handleNewCommentChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity("");
     setNewTask(event.target.value);
+  }
+
+  //deleta o item clicado
+  function deleteTask(taskToDelete: string) {
+    const taskWithoutDeletedOne = tasks.filter((task) => {
+      return task !== taskToDelete;
+    });
+
+    setTasks(taskWithoutDeletedOne);
   }
 
   //verificar se o botão foi pressionado sem enviar nenhum valor
@@ -61,10 +72,13 @@ export function List() {
           </BoxContent>
         </form>
       </Box>
-
       <BoxList>
         {tasks.map((name) => {
-          return <Task key="tasks" name={name} />;
+          return (
+            <Item>
+              <Task key={name} name={name} onDelete={deleteTask} />
+            </Item>
+          );
         })}
       </BoxList>
     </ListaWrapper>

@@ -2,10 +2,9 @@ import { ThemeProvider } from "styled-components";
 import { List } from "./components/List";
 import { GlobalStyle } from "./styles/global";
 import { lightTheme } from "./styles/themes/light";
+import { TaskProps } from "./components/Task";
 
-import { TaskItem } from "./components/Task/index";
-
-export function App({ name }: TaskItem) {
+export function App({ name }: TaskProps) {
   return (
     <>
       <ThemeProvider theme={lightTheme}>

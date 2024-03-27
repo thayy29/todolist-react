@@ -45,11 +45,11 @@ export const TaskInput = styled.input`
   height: 3.5rem;
 
   background-color: ${(props) => props.theme["gray-200"]};
+  color: ${(props) => props.theme["gray-300"]};
 
   padding: 0 1rem;
   border-radius: 5px;
   border: 0;
-  color: ${(props) => props.theme["gray-300"]};
 
   &:focus {
     box-shadow: none;
@@ -68,6 +68,7 @@ export const ButtonAdd = styled.button`
   background-color: transparent;
   border: 0;
   margin-left: 0.25rem;
+
   cursor: pointer;
 
   &:disabled {
@@ -78,4 +79,11 @@ export const ButtonAdd = styled.button`
 
 export const BoxList = styled.div`
   background-color: transparent;
+`;
+
+export const Item = styled.div`
+  display: flex;
+  justify-content: center;
+
+  margin-top: 1rem;
 `;
